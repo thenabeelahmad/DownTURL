@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<!-- adding the video content -->
+{% if yobj %}
+<div class="container text-center col-xs-6 mt-5">
+
+
+<div class="card w-100 mt-2" >
+    <br>
+    <h4>Title : <strong class="text-primary">{{ yobj.title }}</strong></h4>
+    <div class="card-body">
+        <img src="{{ yobj.bigthumb }}" alt="">
+        <p><b>Category</b> : {{ yobj.category }}</p>
+
+        
+        <p class="card-text"><b>Ratings</b> ( {{ yobj.rating }} ) | <b>Views</b> ( {{ yobj.viewcount }} ) | <b>Author</b> ( {{ yobj.author }} ) | <b>Length</b> ( {{ yobj.length }} ) | </p>
+     <p class="card-text"><b>Duration</b> ( {{ yobj.duration }} ) | <b>Likes</b> ( {{ yobj.likes }} ) | <b>Dislikes</b> ( {{ yobj.dislikes }} ) </p>
+    </div>
+  </div>
+
+
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        
+        <th scope="col">Resolution</th>
+        <th scope="col">Extension</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+        {% for i in yobj.streams %}
+      <tr>
+        
+        <td>{{ i.resolution }}</td>
+        <td>{{ i.extension }}</td>
+        <td><a href="{{ i.url }}">Click here</a></td>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+
+{% endblock %}
